@@ -114,4 +114,37 @@ public class OrderJpaRepository implements OrderRepository {
             throw new RepositoryException(e);
         }
     }
+    @Override
+    public List<Order> getOrdersForStatistics() throws RepositoryException {
+        try (Session session = sessionFactory.openSession()) {
+            return session.createQuery("FROM Order WHERE sellerId.userRole.roleId = ?1 AND orderStatus.statusId = ?2", Order.class)
+                    .setParameter(1, 4)
+                    .setParameter(2, 3)
+                    .list();
+        } catch (HibernateException e) {
+            throw new RepositoryException(e);
+        }
+    }
+    @Override
+    public List<Order> getCountApproved(int sellerId) throws RepositoryException {
+        try (Session session = sessionFactory.openSession()) {
+            return session.createQuery("FROM Order WHERE sellerId.userRole.roleId = ?1 AND orderStatus.statusId = ?2 AND sellerId.userId = ?3", Order.class)
+                    .setParameter(1, 4)
+                    .setParameter(2, 3)
+                    .setParameter(3, sellerId)
+                    .list();
+        } catch (HibernateException e) {
+            throw new RepositoryException(e);
+        }
+    }
+    @Override
+    public List<Order> getOrderBySellerId(int sellerId) throws RepositoryException {
+        try (Session session = sessionFactory.openSession()) {
+            return session.createQuery("FROM Order WHERE sellerId.userId = ?1", Order.class)
+                    .setParameter(1, sellerId)
+                    .list();
+        } catch (HibernateException e) {
+            throw new RepositoryException(e);
+        }
+    }
 }

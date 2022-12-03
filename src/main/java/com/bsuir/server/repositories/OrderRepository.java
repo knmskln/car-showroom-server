@@ -3,7 +3,6 @@ import com.bsuir.server.entities.Order;
 import com.bsuir.server.repositories.exception.RepositoryException;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface OrderRepository {
 
@@ -21,4 +20,8 @@ public interface OrderRepository {
 
     List<Order> getOrderByStatusId(int statusId) throws RepositoryException;
 
+    List<Order> getOrdersForStatistics() throws RepositoryException;
+
+    List<Order>  getCountApproved(int sellerId) throws RepositoryException;
+    List<Order> getOrderBySellerId(int sellerId) throws RepositoryException;
 }

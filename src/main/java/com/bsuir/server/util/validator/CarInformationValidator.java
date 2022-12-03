@@ -22,6 +22,6 @@ public class CarInformationValidator {
                 model.matches(CAR_NAME_FORMAT) &&
                 color.matches(CAR_NAME_FORMAT) &&
                 year > 1950 && year < 2023 &&
-                price > 0 && price < 150000;
+                price > 0 && price < 300000;
     }
 }

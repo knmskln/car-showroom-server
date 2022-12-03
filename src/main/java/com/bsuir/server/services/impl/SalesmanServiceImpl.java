@@ -30,13 +30,16 @@ public class SalesmanServiceImpl implements SalesmanService {
 
     private final UserRepository userRepository = UserJpaRepository.getInstance();
     @Override
-    public void changeOrderStatus(int orderId, int statusId, int userId) throws ServiceException {
+    public void changeOrderStatus(int orderId, int statusId, int sellerId) throws ServiceException {
         try {
             Order order = orderRepository.get(orderId);
             Status orderStatus = statusRepository.get(statusId);
+            User seller = userRepository.get(sellerId);
+            order.setSellerId(seller);
             order.setOrderStatus(orderStatus);
             orderRepository.update(order);
-            User user = userRepository.get(userId);
+
+            User user = order.getUserId();
             String email = user.getEmail();
             if (statusId==3){
             EmailSender.getInstance().sendEmail(

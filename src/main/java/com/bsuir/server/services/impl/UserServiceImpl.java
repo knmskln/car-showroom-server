@@ -169,6 +169,7 @@ public class UserServiceImpl implements UserService {
             order.setCarId(car);
             order.setUserId(user);
             order.setOrderStatus(status);
+            order.setSellerId(user);
             orderRepository.add(order);
         } catch (RepositoryException e) {
             throw new ServiceException(e);

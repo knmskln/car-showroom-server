@@ -1,10 +1,7 @@
 package com.bsuir.server.repositories;
 
 import com.bsuir.server.entities.Car;
-import com.bsuir.server.entities.User;
 import com.bsuir.server.repositories.exception.RepositoryException;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;

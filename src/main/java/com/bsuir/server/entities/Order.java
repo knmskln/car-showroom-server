@@ -1,6 +1,5 @@
 package com.bsuir.server.entities;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,7 +12,6 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Order {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="order_id")
@@ -31,4 +29,7 @@ public class Order {
     @JoinColumn(name = "status_id")
     private Status orderStatus;
 
+    @ManyToOne
+    @JoinColumn(name = "seller_id")
+    private User sellerId;
 }

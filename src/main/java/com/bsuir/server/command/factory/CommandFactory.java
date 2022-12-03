@@ -2,10 +2,9 @@ package com.bsuir.server.command.factory;
 
 import com.bsuir.server.command.Command;
 import com.bsuir.server.command.impl.car.*;
-import com.bsuir.server.command.impl.order.ChangeOrderStatusCommand;
-import com.bsuir.server.command.impl.order.GetAllOrders;
-import com.bsuir.server.command.impl.order.GetOrderByStatusIdCommand;
-import com.bsuir.server.command.impl.order.GetOrderByUserIdCommand;
+import com.bsuir.server.command.impl.order.*;
+import com.bsuir.server.command.impl.statistics.GetCountApprovedCommand;
+import com.bsuir.server.command.impl.statistics.GetOrdersForStatisticsCommand;
 import com.bsuir.server.command.impl.user.*;
 import com.bsuir.server.util.cooperation.ClientRequest;
 import com.bsuir.server.util.cooperation.ServerResponse;
@@ -61,6 +60,10 @@ public class CommandFactory {
                 return new OrderCarCommand(request, response);
             case "getAllOrders":
                 return new GetAllOrders(request, response);
+            case "getOrdersForStatistics":
+                return new GetOrdersForStatisticsCommand(request,response);
+            case "getCountApproved":
+                return new GetCountApprovedCommand(request,response);
         }
         throw new RuntimeException("Команда не нашлась..");
     }

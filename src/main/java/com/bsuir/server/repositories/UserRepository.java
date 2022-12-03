@@ -1,6 +1,5 @@
 package com.bsuir.server.repositories;
 
-import com.bsuir.server.entities.Order;
 import com.bsuir.server.entities.User;
 import com.bsuir.server.repositories.exception.RepositoryException;
 import org.aspectj.weaver.ast.Or;
@@ -22,6 +21,4 @@ public interface UserRepository {
     void add(User user) throws RepositoryException;
 
     void update(User user) throws RepositoryException;
-
-
 }

@@ -1,6 +1,5 @@
 package com.bsuir.server.repositories;
 
-import com.bsuir.server.entities.Role;
 import com.bsuir.server.entities.Status;
 import com.bsuir.server.repositories.exception.RepositoryException;
 
